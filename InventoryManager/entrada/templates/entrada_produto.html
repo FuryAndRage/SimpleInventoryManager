@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block nav %}
+	{% include "includes/_nav.html" %}
+{% endblock nav %}
+{% block main %}
+<div class="container">
+	<div class="row"></div>
+	<div class="card">
+		<div class="card-content">
+			{%include 'includes/_messages.html'%}
+	<form method="post">
+	{% csrf_token %}
+		<div class="col">
+			<h4>Produto: {{produto.produto_nome}}</h4>
+			<h5>Quantidade Atual: {{produto.produto_quantidade}}</h5>
+		</div>
+		<div class="row"></div>
+		<div class="col s12 input-field">
+			<input type="hidden" name="user" id="id_user" value={{request.user.id}}>
+			<select name="entrada_produto" required="" id="id_entrada_produto">
+			<option value="{{produto.id}}" selected=""></option>
+		</div>
+		<div class="col s12 input-field">
+			<input type="number" name="entrada_quantidade" required="" id="id_entrada_quantidade">
+			<label for="id_entrada_quantidade" class="active">Quantidade:</label>
+		</div>
+		<div class="row"></div>
+		<div class="col s12 input-field">
+			<label for="id_entrada_motivo" class="active">Motivo:</label>
+			<textarea name="entrada_motivo" cols="40" rows="10" required="" id="id_entrada_motivo"></textarea>
+		</div>
+		<button class="btn" type="submit">Entrada</button>
+	</form>
+	</div>
+	</div>
+</div>
+{% endblock main %}
+
+

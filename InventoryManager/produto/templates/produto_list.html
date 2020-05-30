@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+
+{% block nav %}
+	{% include "includes/_nav.html" %}
+{% endblock nav %}
+{% block main %}
+<div class="container">
+	{%include 'includes/_messages.html'%}
+	<div class="col s12 m12 l12">
+		<div class="row">
+			{% for obj in objects  %}
+				<div class="col s12 m4">
+					<div class="card">
+						<div class="card-image">
+							<img style="height: 300px;width: 100%;" class="img-responsive" src="{{obj.produto_imagem.url}}">
+						</div>
+						<div class="card-content">
+							{% if obj.produto_preco %}
+								<h4><span>$</span>{{obj.produto_preco}}</h4>
+							{% endif %}
+							
+							<span class="card-title black-text">{{obj.produto_nome}}</span>
+							<h5>Em estoque: {{obj.produto_quantidade}}</h5>
+							{% if obj.produto_descricao %}
+								<p>{{obj.produto_descricao|slice:200}}...</p>
+							{% endif %}
+							
+						</div>
+						<div class="card-action">
+							<div class="row">
+							<div class="col m4">
+								<a href="{%url 'entrada:entrada' obj.id%}"><button class="btn">Entrada</button></a>
+							</div>
+							<div class="col m4 right">
+								<a href="{%url 'baixa:baixa' obj.id%}"><button class="btn">Baixa</button></a>
+							</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>	
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock main %}

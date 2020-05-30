@@ -1,0 +1,10 @@
+{% if messages %}
+<br>
+{% for message in messages %}
+
+<div class=" center-align materialert {{ message.tags }}">
+	<h5>{{ message }}</h5>
+
+</div>
+{% endfor %}
+{% endif %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block nav %}
+	{% include "includes/_nav.html" %}
+{% endblock nav %}
+{% block main %}
+<div class="container">
+	<h4>Baixa Log</h4>
+	<table>
+		<thead>
+			<tr>
+				<th>Usuario</th>
+				<th>Data</th>
+				<th>Produto</th>
+				<th>Quantidade</th>
+				<th>Motivo</th>
+			</tr>
+		</thead>
+		<tbody>
+			{%for obj in objects%}
+			<tr>
+				<td>{{obj.user}}</td>
+				<td>{{obj.baixa_data}}</td>
+				<td>{{obj.baixa_produto}}</td>
+				<td>{{obj.baixa_quantidade}}</td>
+				<td>{{obj.baixa_motivo}}</td>
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+{% endblock main %}
